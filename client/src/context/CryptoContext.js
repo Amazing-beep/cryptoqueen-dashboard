@@ -56,7 +56,17 @@ export const CryptoProvider = ({ children }) => {
     try {
       dispatch({ type: ACTIONS.SET_LOADING, payload: true });
       const response = await axios.get(`${API_BASE_URL}/api/coins`);
-      dispatch({ type: ACTIONS.SET_COINS, payload: response.data.data });
+      
+      // Check if response has the expected structure
+      if (response.data && response.data.data && Array.isArray(response.data.data)) {
+        dispatch({ type: ACTIONS.SET_COINS, payload: response.data.data });
+      } else {
+        console.error('Unexpected response structure:', response.data);
+        dispatch({ 
+          type: ACTIONS.SET_ERROR, 
+          payload: 'Invalid response format from server' 
+        });
+      }
     } catch (error) {
       console.error('Error fetching coins:', error);
       dispatch({ 
@@ -70,7 +80,17 @@ export const CryptoProvider = ({ children }) => {
     try {
       dispatch({ type: ACTIONS.SET_LOADING, payload: true });
       const response = await axios.get(`${API_BASE_URL}/api/coins/${coinId}`);
-      dispatch({ type: ACTIONS.SET_COIN_DETAILS, payload: response.data.data });
+      
+      // Check if response has the expected structure
+      if (response.data && response.data.data) {
+        dispatch({ type: ACTIONS.SET_COIN_DETAILS, payload: response.data.data });
+      } else {
+        console.error('Unexpected response structure:', response.data);
+        dispatch({ 
+          type: ACTIONS.SET_ERROR, 
+          payload: 'Invalid response format from server' 
+        });
+      }
     } catch (error) {
       console.error('Error fetching coin details:', error);
       dispatch({ 
@@ -84,7 +104,17 @@ export const CryptoProvider = ({ children }) => {
     try {
       dispatch({ type: ACTIONS.SET_LOADING, payload: true });
       const response = await axios.get(`${API_BASE_URL}/api/news`);
-      dispatch({ type: ACTIONS.SET_NEWS, payload: response.data.data.articles });
+      
+      // Check if response has the expected structure
+      if (response.data && response.data.data && response.data.data.articles && Array.isArray(response.data.data.articles)) {
+        dispatch({ type: ACTIONS.SET_NEWS, payload: response.data.data.articles });
+      } else {
+        console.error('Unexpected response structure:', response.data);
+        dispatch({ 
+          type: ACTIONS.SET_ERROR, 
+          payload: 'Invalid response format from server' 
+        });
+      }
     } catch (error) {
       console.error('Error fetching news:', error);
       dispatch({ 

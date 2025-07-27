@@ -9,10 +9,11 @@ import { TrendingUp, Newspaper, ArrowRight, Crown, Sparkles } from 'lucide-react
 const Home = () => {
   const { coins, news, loading, error } = useCrypto();
 
-  const topCoins = coins.slice(0, 6);
-  const topNews = news.slice(0, 3);
+  // Safely slice arrays with fallback to empty arrays
+  const topCoins = (coins && Array.isArray(coins)) ? coins.slice(0, 6) : [];
+  const topNews = (news && Array.isArray(news)) ? news.slice(0, 3) : [];
 
-  if (loading && coins.length === 0) {
+  if (loading && (!coins || coins.length === 0)) {
     return <LoadingSpinner size="lg" text="Loading CryptoQueen Dashboard..." />;
   }
 
@@ -83,6 +84,10 @@ const Home = () => {
 
         {loading ? (
           <LoadingSpinner text="Loading top cryptocurrencies..." />
+        ) : topCoins.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-500">No cryptocurrency data available at the moment.</p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {topCoins.map((coin) => (
@@ -103,6 +108,10 @@ const Home = () => {
 
         {loading ? (
           <LoadingSpinner text="Loading latest news..." />
+        ) : topNews.length === 0 ? (
+          <div className="text-center py-8">
+            <p className="text-gray-500">No news articles available at the moment.</p>
+          </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {topNews.map((article, index) => (
