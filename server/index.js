@@ -21,23 +21,38 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-// CORS configuration
+// CORS configuration - Updated to allow Vercel domains
 const allowedOrigins = process.env.ALLOWED_ORIGINS 
   ? process.env.ALLOWED_ORIGINS.split(',') 
-  : ['http://localhost:3000'];
+  : [
+      'http://localhost:3000',
+      'https://cryptoqueen-dashboard-8v7wlsdxi-amazing-beeps-projects.vercel.app',
+      'https://codedbyamazing.tech',
+      'https://*.vercel.app',
+      'https://*.netlify.app'
+    ];
 
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
     
+    // Check if origin is in allowed list
     if (allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'));
+      // Allow Vercel domains
+      if (origin.includes('vercel.app') || origin.includes('netlify.app')) {
+        callback(null, true);
+      } else {
+        console.log('Blocked origin:', origin);
+        callback(new Error('Not allowed by CORS'));
+      }
     }
   },
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
 // Body parsing middleware
@@ -95,4 +110,5 @@ app.listen(PORT, () => {
   console.log(`🚀 CryptoQueen Dashboard API running on port ${PORT}`);
   console.log(`👑 Built by Nkhomotabo Amazing Mkhonta`);
   console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`🔗 Allowed origins: ${allowedOrigins.join(', ')}`);
 }); 
