@@ -1,8 +1,11 @@
 # 👑 CryptoQueen Dashboard
 
-A modern, user-friendly cryptocurrency dashboard designed to empower women exploring the world of crypto. Built with real-time data, beautiful UI, and comprehensive features.
+A modern, user-friendly cryptocurrency dashboard designed to empower women exploring the world of crypto. Built with real-time data, beautiful UI, and comprehensive features. It enables you to access latest cryptocurrency prices and news.
 
 **🌐 Live Website:** [https://codedbyamazing.tech/](https://codedbyamazing.tech/)
+
+**📹 Demo Video:** [Watch Demo](https://www.loom.com/share/44e3a02b4c5d4196bbf89b2c85dda8d7?sid=4257c362-aef4-46a1-9f07-ac04f85a9b9f)
+
 
 ![CryptoQueen Dashboard](https://img.shields.io/badge/Status-Live%20%26%20Deployed-brightgreen)
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
@@ -19,7 +22,7 @@ A modern, user-friendly cryptocurrency dashboard designed to empower women explo
 - **Women-Focused** - Designed specifically to empower women in crypto
 - **Fast & Reliable** - Built with modern technologies and best practices
 
-## 🚀 Tech Stack
+##  Tech Stack
 
 ### Backend
 - **Node.js** - Runtime environment
