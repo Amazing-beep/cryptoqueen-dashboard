@@ -2,7 +2,9 @@
 
 A modern, user-friendly cryptocurrency dashboard designed to empower women exploring the world of crypto. Built with real-time data, beautiful UI, and comprehensive features.
 
-![CryptoQueen Dashboard](https://img.shields.io/badge/Status-Ready%20to%20Deploy-brightgreen)
+**🌐 Live Website:** [https://codedbyamazing.tech/](https://codedbyamazing.tech/)
+
+![CryptoQueen Dashboard](https://img.shields.io/badge/Status-Live%20%26%20Deployed-brightgreen)
 ![React](https://img.shields.io/badge/React-18.2.0-blue)
 ![Node.js](https://img.shields.io/badge/Node.js-16+-green)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.3.6-38B2AC)
@@ -94,13 +96,6 @@ cryptoqueen-dashboard/
    ALLOWED_ORIGINS=http://localhost:3000
    CACHE_DURATION=300000
    ```
-
-5. **Get NewsAPI Key:**
-   - Visit [NewsAPI.org](https://newsapi.org/)
-   - Sign up for a free account
-   - Copy your API key
-   - Add it to the `.env` file
-
 6. **Start the server:**
    ```bash
    npm run dev
@@ -127,46 +122,25 @@ cryptoqueen-dashboard/
 
 ## 🌐 Deployment
 
-### Backend Deployment (Render/Railway)
-
-#### Option 1: Render.com
-
-1. **Create a Render account** at [render.com](https://render.com)
-
-2. **Connect your GitHub repository**
-
-3. **Create a new Web Service:**
-   - **Name:** `cryptoqueen-dashboard-api`
-   - **Environment:** `Node`
-   - **Build Command:** `cd server && npm install`
-   - **Start Command:** `cd server && npm start`
-   - **Root Directory:** Leave empty
-
-4. **Configure environment variables:**
-   ```
-   NODE_ENV=production
-   NEWS_API_KEY=your_newsapi_key_here
-   ALLOWED_ORIGINS=https://your-frontend-domain.com
-   CACHE_DURATION=300000
-   ```
-
-5. **Deploy the service**
-
-#### Option 2: Railway.app
+### Backend Deployment (Railway)
 
 1. **Create a Railway account** at [railway.app](https://railway.app)
 
 2. **Connect your GitHub repository**
 
-3. **Create a new service from GitHub repo**
+3. **Deploy automatically** - Railway will auto-detect your Node.js app
 
-4. **Configure environment variables** (same as Render)
+4. **Configure environment variables:**
+   ```
+   NODE_ENV=production
+   NEWS_API_KEY=your_actual_newsapi_key_here
+   ALLOWED_ORIGINS=https://codedbyamazing.tech,https://your-vercel-url.vercel.app
+   CACHE_DURATION=300000
+   ```
 
-5. **Deploy automatically**
+5. **Get your Railway URL** (e.g., `https://cryptoqueen-dashboard-production.up.railway.app`)
 
-### Frontend Deployment (Vercel/Netlify)
-
-#### Option 1: Vercel
+### Frontend Deployment (Vercel)
 
 1. **Create a Vercel account** at [vercel.com](https://vercel.com)
 
@@ -180,42 +154,21 @@ cryptoqueen-dashboard/
 
 4. **Add environment variable:**
    ```
-   REACT_APP_API_URL=https://your-backend-url.com
-   ```
-
-5. **Deploy**
-
-#### Option 2: Netlify
-
-1. **Create a Netlify account** at [netlify.com](https://netlify.com)
-
-2. **Import your GitHub repository**
-
-3. **Configure build settings:**
-   - **Base directory:** `client`
-   - **Build command:** `npm run build`
-   - **Publish directory:** `build`
-
-4. **Add environment variable:**
-   ```
-   REACT_APP_API_URL=https://your-backend-url.com
+   REACT_APP_API_URL=https://your-railway-backend-url.up.railway.app
    ```
 
 5. **Deploy**
 
 ### Custom Domain Setup
 
-1. **Purchase a domain** (if you don't have one)
+1. **In Vercel dashboard:**
+   - Go to Settings → Domains
+   - Add `codedbyamazing.tech`
 
-2. **Configure DNS:**
-   - Point your domain to your hosting provider
-   - Add CNAME record for `www` subdomain
+2. **Configure DNS at your domain registrar:**
+   - Add CNAME record pointing to your Vercel project
 
-3. **Update environment variables:**
-   - Backend: Add your domain to `ALLOWED_ORIGINS`
-   - Frontend: Update `REACT_APP_API_URL` if needed
-
-4. **SSL Certificate:** Most hosting providers provide automatic SSL
+3. **Wait for DNS propagation** (usually 5-30 minutes)
 
 ## 🔧 Configuration
 
@@ -232,7 +185,7 @@ CACHE_DURATION=300000        # Cache duration in milliseconds
 
 #### Frontend (.env)
 ```env
-REACT_APP_API_URL=https://your-backend-url.com  # Backend API URL
+REACT_APP_API_URL=https://your-backend-url.up.railway.app  # Backend API URL
 ```
 
 ### API Endpoints
@@ -318,7 +271,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Nkhomotabo Amazing Mkhonta**
 - Website: [codedbyamazing.tech](https://codedbyamazing.tech)
 - GitHub: [@your-github-username](https://github.com/your-github-username)
-- Email: [your-email@example.com](mailto:your-email@example.com)
+
 
 ## 🙏 Acknowledgments
 
@@ -334,10 +287,18 @@ If you encounter any issues or have questions:
 
 1. Check the [Issues](https://github.com/your-username/cryptoqueen-dashboard/issues) page
 2. Create a new issue with detailed information
-3. Contact the developer at [your-email@example.com](mailto:your-email@example.com)
+
 
 ---
 
 **Made with ❤️ by Nkhomotabo Amazing Mkhonta**
 
 *Empowering women in cryptocurrency, one dashboard at a time.*
+
+---
+
+## 🌐 Live Demo
+
+**Visit the live application:** [https://codedbyamazing.tech/](https://codedbyamazing.tech/)
+
+Experience the CryptoQueen Dashboard in action with real-time cryptocurrency data and news!
